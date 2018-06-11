@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>点击事件和事件修饰符</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+	<!-- 点击事件和事件修饰符 -->
+	<div id="app2">
+		<p>my age is {{age}}</p>
+		<button @click.once="add(1)">加一岁</button>   <!-- @相当于 v-on:-->
+		<button v-on:click="sub(1)">减一岁</button>
+		<button @dblclick="add(10)">加十岁</button> <!-- @相当于 v-on:-->
+		<button v-on:dblclick="sub(10)">减十岁</button>
+		<div id="box" class="box" v-on:mousemove="handleMove">  <!-- 元素与元素之间只有间隔 没有逗号-->
+			{{x}},{{y}} -
+			<span v-on:mousemove.stop="stop"> Stop Move</span>
+		</div>
+
+		<a v-on:click="alert" href="http://www.baidu.com">Baidu</a>
+
+
+		<!-- 事件修饰符-->
+		<!-- 阻止单击事件继续传播 -->
+		<!-- <a v-on:click.stop="doThis"></a> -->
+
+		<!-- 提交事件不再重载页面 -->
+		<!-- <form v-on:submit.prevent="onSubmit"></form>
+ -->
+		<!-- 修饰符可以串联 -->
+		<!-- <a v-on:click.stop.prevent="doThat"></a> -->
+
+		<!-- 只有修饰符 -->
+		<!-- <form v-on:submit.prevent></form> -->
+
+		<!-- 添加事件监听器时使用事件捕获模式 -->
+		<!-- 即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理 -->
+		<!-- <div v-on:click.capture="doThis">...</div> -->
+
+		<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+		<!-- 即事件不是从内部元素触发的 -->
+		<!-- <div v-on:click.self="doThat">...</div> -->
+
+	</div>
+	
+
+
+	<!-- 键盘事件 键值修饰符 详细看官网的中文文档-->
+	<!-- 数据绑定 1、ref  2、指令v-model name 先检查，data的元素，然后绑定的是后面的{{name}}输出，又绑定了自己input标签当前的输入-->
+
+	<div id="app3">
+		<h1>键盘 events || 双向数据绑定 input  select textArea  输入+ 输出 </h1>
+		<label>姓名：</label>
+		<!-- <input type="text" v-on:keyup.enter="logName"> -->
+		<!-- up 事件 支持链 按enter键才会触发 -->
+		<input ref="name" type="text" v-model="name">  
+		<span>{{name}}</span>
+
+		<label>年龄：</label>
+		<!-- <input type="text" v-on:keyup.enter.alt="logAge">  -->
+		<!-- up 事件 按enter键和alt一起才会触发 -->
+		<input ref="age" type="text" v-on:keyup="logAge">
+		<span>{{age}}</span>
+
+	</div>
+
+	<script src="app2.js"></script>
+</body>
+</html>

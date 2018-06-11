@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>vue数据的绑定</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	
+	<!-- 根容器-->
+	<div id="app">
+		<h1>{{greet("how do you do ?")}}</h1>
+		<p>{{name}}</p>
+		<p>{{job}}</p>
+		<!-- v-bind 绑定一个a标签网站-->
+		<a v-bind:href="website">百度一下</a>
+		<input type="text" v-bind:value="name">
+		<!-- 插入html-->
+		<p v-html="websiteTag"></p>
+	</div>
+	<script src="app.js"></script>
+	
+</body>
+</html>
