@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for v-if</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app5">
+		<h1>v-if的使用</h1>
+		<button v-on:click="success=!success">Success?</button>
+		<button v-on:click="error=!error">error?</button>
+		<br/>
+		<p v-if="success"> program runs Success</p>
+		<p v-else-if="error"> program runs Falied</p>
+
+		<h1>v-for的使用</h1>
+		<ul>
+			<li v-for="x in mydatas">
+				<p>{{x}}</p>   <!-- 要显示什么内容的，都要用到括号-->
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="(us,index) in users">
+				<p>{{index}}--{{us.name}}---{{us.age}}</p>
+			</li>
+		</ul>
+
+		<!-- 使用模板 模板的一个好处就是不会创建太多的div容器，假设这里的template换成div-->
+		<template v-for="us in users">
+			<h3>{{us.name}}</h3>
+			<h3>{{us.age}}</h3>
+		</template>
+	</div>
+	
+	<script src="app5.js"></script>	
+</body>
+</html>

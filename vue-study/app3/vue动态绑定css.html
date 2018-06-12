@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>vue数据的绑定</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app4">
+		<h1> 动态CSS v-bind绑定样式 v-on:click监听</h1>
+		<h2>实例一</h2>
+		<div v-on:click="changeThisColor=!changeThisColor" v-bind:class="{changeColor:changeThisColor}">
+			<span>Hello World</span>
+		</div>
+
+		<h2>实例二</h2>
+		<button v-on:click="changeThisColor=!changeThisColor">changeThisColor</button>
+		<button v-on:click="changeThisLength=!changeThisLength">changeThisLength</button>
+		<div v-bind:class="computedClass">  <!--  这里可以采用计算属性,然后返回一个样式的对象 -->
+			<span>Change the World</span>
+		</div>
+
+	</div>
+
+	<script src="app4.js"></script>
+	
+</body>
+</html>
