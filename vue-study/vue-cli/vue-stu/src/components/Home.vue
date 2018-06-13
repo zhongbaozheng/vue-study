@@ -46,13 +46,36 @@ export default {
   created:function(){
 
     //在created里面使用网络请求，这个是使用resource
-    this.$http.get("http://jsonplaceholder.typicode.com/users")
-    .then((data)=>{
-      // console.log(data);
-      this.users = data.body;
-    });
+    // this.$http.get("http://jsonplaceholder.typicode.com/users")
+    // .then((data)=>{
+    //   // console.log(data);
+    //   this.users = data.body;
+    // });
 
-    //fetch和axios 需要解决跨域问题
+    //fetch和axios 需要解决跨域问题 跨域问题需要到config目录下index.js修改proxyTable内容
+    //链接 http://www.thenewstep.cn/test/testToken.php
+    //token  f4c902c9ae5a2a9d8f84868ad064e706
+    //henry 123456
+    // fetch("/apis/test/testToken.php",{
+    //   method:"post",   //method而不是methods。。。。。
+    //   headers:{
+    //     token:"f4c902c9ae5a2a9d8f84868ad064e706"
+    //   },
+    //   body:JSON.stringify({username:"henry",password:"123456"})  //传递参数
+    // }).then(result=>{
+    //   return result.json();   //结果为json格式
+    // }).then(data=>{
+    //   console.log(data);    //获取数据
+    // });
+
+
+    //axios 需要配置全局，main.js中配置
+    this.$axios.post("/apis/test/testToken.php",{
+      username:"henry",
+      password:"123456",
+    }).then(data=>{
+      console.log(data.data);  //获取数据
+    })
 
   }
 }

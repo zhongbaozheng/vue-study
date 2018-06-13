@@ -5,12 +5,19 @@ import VueResource from 'vue-resource'  //然后可以使用我们的http
 import Home from './components/Home'
 import HelloWorld from './components/HelloWorld'
 
+import axios from 'axios'  //配置axios
+
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
 /*全局注册组件，并在App.vue使用*/
 // Vue.component("users",Users);
+
+axios.defaults.headers.common['token'] = 'f4c902c9ae5a2a9d8f84868ad064e706'
+axios.defaults.headers.post['Content-type'] = "application/json"
+
+Vue.prototype.$axios = axios //全局配置axios
 
 
 const router = new VueRouter({   //路由配置
