@@ -1,0 +1,87 @@
+1、npm init 初始化一个目录
+package.json文件的生成
+
+2、初始化
+npm i webpack vue vue-loader
+
+再初始化
+npm i webpack css-loader vue-template-compiler
+
+即就是初始化loader,生成package-lock.json文件
+
+3、新建src目录，新建app.vue文件
+
+4、新建webpack.config.js
+
+4.1 loader的加载
+
+module:{
+		rules:[
+			{
+		        test: /\.vue$/,
+		        loader: 'vue-loader'
+      		},
+      		{
+		        test: /\.css$/,
+		        use:[
+		        	'style-loader',
+		        	'css-loader',
+		        ]    
+      		},
+      		{
+		        test: /\.styl$/,
+		        use:[
+		        	'style-loader',
+		        	'css-loader',
+		        	'stylus-loader'
+		        ]    
+      		},
+      		{
+		        test: /\.(gif|jpg|jpeg|png|svg)$/,
+		        use:[
+		        	{
+		        		loader: 'url-loader',
+		        		options:{
+		        			limit:1024,
+		        			name:'[name]-aaa.[ext]'
+		        		}
+		        	}
+		        ]
+      		},
+
+		]
+	},
+
+
+4.2  webpack-dev-server 配置
+
+npm i webpack-dev-server
+
+   "build": "webpack --config webpack.config.js",
+   加上
+    "dev":"webpack-dev-server --config webpack.config.js"
+
+然后package.json配置全局环境
+
+npm i cross-env
+
+最终
+
+ "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+ 
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+
+webpack.config.js也要修改
+
+
+
+
+
+
+
+
+
+
+
+
+
