@@ -1,22 +1,28 @@
 <!-- template 的原理就是利用render方法-->
 <template>
-	<div id="test">
-		{{text}}
+	<div id="app">
+		<Header></Header>
+		<Todo></Todo>
+		<Footer></Footer>
 	</div>
 </template>
 
 <script>
-	export default{
-		data(){
-			return {
-				text:'ajhdjhsjdhh'
-			}
-		}
+
+import Header from './todo/header.vue'
+import Footer from './todo/footer.jsx'
+
+import Todo from './todo/todo.vue'
+export default{
+	components:{
+		Header,
+		Todo,
+		Footer,
 	}
+		
+}
 </script>
 
 <style>
-#test{
-	color:red;
-}
+
 </style>
