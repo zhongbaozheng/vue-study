@@ -38,7 +38,7 @@ let config
 // 环境配置 webpack-dev-server
 if (isDev) {
   config = merge(baseConfig, {
-    devtool: '#cheap-module-eval-source-map',
+    // devtool: '#cheap-module-eval-source-map',
     module: {
       rules: [
         {
@@ -60,8 +60,8 @@ if (isDev) {
     devServer,
     // 热加载
     plugins: defaultPlugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
+      // new webpack.NoEmitOnErrorsPlugin()
     ])
   })
 } else {
@@ -93,16 +93,22 @@ if (isDev) {
         }
       ]
     },
+    optimization: {
+      splitChunks: {
+        chunks: true
+      },
+      runtimeChunk: true
+    },
     plugins: defaultPlugins.concat([
-      new ExtractPlugin('styles.[contentHash:8].css'),
-      new webpack.optimize.CommonsChunkPlugin({
-        // 公共库文件
-        name: 'vendor'
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        // 运行时用到的库文件
-        name: 'runtime'
-      })
+      new ExtractPlugin('styles.[contentHash:8].css')
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   // 公共库文件
+      //   name: 'vendor'
+      // }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   // 运行时用到的库文件
+      //   name: 'runtime'
+      // })
     ])
   })
 }

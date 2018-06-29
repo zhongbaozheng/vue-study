@@ -6,6 +6,7 @@ const createVueLoaderOptions = require('./vue-loader.config')
 const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
+  mode: process.env.NODE_ENV || 'production', // production \ development 4.0修改的地方
   target: 'web',
   // 入口地址，js文件
   entry: path.join(__dirname, '../src/index.js'),
