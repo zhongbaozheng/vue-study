@@ -38,7 +38,7 @@ let config
 // 环境配置 webpack-dev-server
 if (isDev) {
   config = merge(baseConfig, {
-    // devtool: '#cheap-module-eval-source-map',
+    devtool: '#cheap-module-eval-source-map',
     module: {
       rules: [
         {
@@ -67,8 +67,7 @@ if (isDev) {
 } else {
   config = merge(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../src/index.js'),
-      vendor: ['vue']
+      app: path.join(__dirname, '../src/index.js')
     },
     output: {
       filename: '[name].[chunkhash:8].js'
@@ -95,12 +94,13 @@ if (isDev) {
     },
     optimization: {
       splitChunks: {
-        chunks: true
+        chunks: 'all'
       },
       runtimeChunk: true
     },
     plugins: defaultPlugins.concat([
-      new ExtractPlugin('styles.[contentHash:8].css')
+      new ExtractPlugin('styles.[name].[chunkhash:8].css')
+      // contenthash会报错，chunk不会，可能是bug
       // new webpack.optimize.CommonsChunkPlugin({
       //   // 公共库文件
       //   name: 'vendor'
