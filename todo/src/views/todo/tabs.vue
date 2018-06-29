@@ -20,40 +20,38 @@
 </template>
 
 <script >
-
 	export default{
-		props:{
-			filter:{
-				type:String,
-				required:true,
-			},
-			todos:{
-				type:Array,
-				required:true
-			}
-		},
-		data(){
-			return{
-				states:['all','active','completed']
-			}
-		},
-		computed:{
-			unFinshedTodoLength(){
-				return this.todos.filter(
-					todo=>!todo.completed).length
-			}
-		},
-		methods:{
-			clearAllCompleted(){
-				this.$emit('clearAllCompleted')
-			},
-			toggleFilter(state){
-				this.$emit('toggle',state)
-			}
-		}
+	  props: {
+	    filter: {
+	      type: String,
+	      required: true
+	    },
+	    todos: {
+	      type: Array,
+	      required: true
+	    }
+	  },
+	  data () {
+	    return {
+	      states: ['all', 'active', 'completed']
+	    }
+	  },
+	  computed: {
+	    unFinshedTodoLength () {
+	      return this.todos.filter(
+	        todo => !todo.completed).length
+	    }
+	  },
+	  methods: {
+	    clearAllCompleted () {
+	      this.$emit('clearAllCompleted')
+	    },
+	    toggleFilter (state) {
+	      this.$emit('toggle', state)
+	    }
+	  }
 	}
-	
-</script>
+	</script>
 
 <style lang="stylus" scoped>
 .helper{

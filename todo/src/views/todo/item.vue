@@ -13,20 +13,18 @@
 
 <script >
 export default {
-	props:{
-		todo:{
-			type:Object,
-			required:true
-		}
-	},
-	methods:{
-		deleteTodo(){
-			this.$emit('del',this.todo.id)
-		}
-	}
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    deleteTodo () {
+      this.$emit('del', this.todo.id)
+    }
+  }
 }
-
-	
 </script>
 
 
@@ -69,10 +67,10 @@ export default {
   appearance: none;
   outline none
   &:after{
-    content url('../assets/image/round.svg')
+    content url('../../assets/image/round.svg')
   }
   &:checked:after{
-    content url('../assets/image/done.svg')
+    content url('../../assets/image/done.svg')
   }
 }
 .destory{
